@@ -1,6 +1,21 @@
 # React Interview Question
 1. ``` React Hooks ```
    - useState
+     -  ```useState``` is a hook in React that allows functional component to manage state.
+     -  it takes an inital state as an arugument and returns an array with two elements.
+     -  the current state value and a function to update that value
+     ```
+     import React, {useState} from 'react';
+     function Counter() {
+        const [count, setCount] = useState(0);
+        return (
+        <div>
+           <p>You clicked {count} time</p>
+           <button onClick={() => setCount(count + 1)}>Click Me</button>
+        </div>
+        );
+     }
+     ```
    - useEffect
    - useContext
    - useReducer
