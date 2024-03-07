@@ -20,7 +20,9 @@
      - ```useEffect``` is another hook in React used for handling side effects in functional components.
      - it allows you to perform side effects in your function components, sunch as data fetching, subscriptions or manually changing the DOM after the components has rendered.
      - ```useEffect``` is called after every render
-     - ```
+     - if you only want the effect to run once (similar to ```componentDidMount``` in class components) you can pass an empty dependency array [] as the second argument to useEffect.
+     - if you want to pass dependencies for the effect you can pass them as an array to the second argument.
+     ```
           import React, { useState, useEffect } from 'react';
           function Example() {
             const [count, setCount] = useState(0);
@@ -39,8 +41,43 @@
         
    - useReducer
    - useMemo
+     - ```useMemo``` is a hook in React used for memoization. which is a technique to optimize performance by caching the results of expensive function calls and reusing them when the
+        input are the same .
+      - it takes a function and an array of dependencies, and returns a momoized value.
+        ```
+           import React, {useState, useMomo } from 'react';
+           function ExpensiveCalculation({a, b}) {
+              const result = useMemo(() => {
+                 console.log('Calculating....');
+                 retun a*b;
+              }, [a,b]);
+
+              return(
+                 <div> The result is : {result}</div>
+              );
+           }
+        ```
    - useCallback
    - useRef
+     - ```useRef``` is a hook in React that provides a way to persist mutable values across renders without causing a re-render when the value changes.
+     - it returns a mutable ref object whose ```.current``` property is initialized to the passed argument ( this initial value)
+     - The returned object will persist for the full lifetime of the component.
+       ```
+          import React, {userRef} from 'react';
+          function TextInputwithFocusButton() {
+             const inputEl = useRef(null);
+             const onButtonClick = () => {
+                inputEl.current.focus();
+             };
+
+          return (
+             <div>
+                <input ref={inputEl} type="text">
+                <button onClick={onButtonClick}>Foucs the Input</button>
+             </div>
+          );
+          }
+       ```
 2. Higher Order Component
    - What
    - When
