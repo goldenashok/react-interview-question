@@ -22,6 +22,7 @@
      - ```useEffect``` is called after every render
      - if you only want the effect to run once (similar to ```componentDidMount``` in class components) you can pass an empty dependency array [] as the second argument to useEffect.
      - if you want to pass dependencies for the effect you can pass them as an array to the second argument.
+     - this prevents unnerssory re-calculations, improving performance.
      ```
           import React, { useState, useEffect } from 'react';
           function Example() {
@@ -38,7 +39,34 @@
           }
        ```
    - useContext
-        
+        - ```useContext``` is a hook in React that allows functional component to consume context that has been created using the ```React.createContext``` API.
+        - It provides a way a to access the value of the nearest context of a specified type
+          ```
+             import React, {useContext} from 'react';
+             //Create a context
+             context ThemeContext = React.createContext('light');
+
+             function ThemedButton() {
+                const theme = useContext(ThemeContext);
+                return <button style={{background: theme}}>Theme Button</button>
+             }
+
+             function Toolbar() {
+                return (
+                   <div>
+                      <ThemedButton />
+                   </div>
+                );
+             }
+
+             function App() {
+                return (
+                   <ThemeContext.Provider value="dark">
+                      <Toolbar />
+                   </ThemeContxt.Provider>
+                );
+             }
+          ```
    - useReducer
    - useMemo
      - ```useMemo``` is a hook in React used for memoization. which is a technique to optimize performance by caching the results of expensive function calls and reusing them when the
