@@ -118,9 +118,13 @@
    - Un Mount
 4. State Management
    - State
+        - The state is a built-in React object that is used to contain data or information about the component. A component's state can change over time; whenever it changes, the                   component re-renders.
    - Props
+        - Props are used to pass data from a parent component to a child component, while state is used to store data that can change within a component
    - Props Drilling
+        - Props Drilling is a practice in which a prop or data is passed from one parent component to one or lower children's components, resulting in multiple levels of the component             tree
    - context
+        - Context provides a way to pass data through the component tree without having to pass props down manually at every level
 5. Redux / Zustand
    - How
    - why
@@ -134,10 +138,14 @@
    - Chunking
 8. Virtual DOM
    - Reconcilation
-   - React Fiber
+        - React Reconcilation is the process throught wich React update the Browser DOM. It makes the DOM updates faster in React.  It updates the virtual DOM first and then uses the             diffing algorithm to make efficient and optimized updates in the Real DOM
    - Render
+        - Render is the technique that can redirect a page with the help of function render().
    - Differ Algoritham
+        - The diffing algorithm's task is to identify the differences between the old and new Virtual DOM.
+        - Instead of re-rendering the entire webpage, only the elements that have changed are updated in the real DOM.
    - How Render Works
+        - The render method in the App component returns a React element (the h1 element). The ReactDOM. render function then takes this React element and renders it into the DOM node             with the id 'root
 9. Server Sider Rendering (SSR) vs Client side Rendering (CSR)
     - how
     - Differrence
