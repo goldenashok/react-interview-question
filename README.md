@@ -207,8 +207,9 @@
       ```
        Ref URL : https://www.youtube.com/watch?v=hyDDerWv7mg&list=PLddu5tL-zt89qhynJUFnZedUmr7fJW0Xw&index=13
 18. useTransition() vs useDeferredValue()
-    useTransition() -> Update the state Value
-    useDeferredvalue() -> Update the value
+    - useTransition() -> Update the state Value
+    - useDeferredvalue() -> Update the value
+
 19. React Query
       React Query is a JavaScript library designed to simplify the complex task of data fetching and caching in React applications. It offers a set of hooks and utilities that enable you to manage data from various sources, including REST APIs, GraphQL, or even local state, effortlessly.
    ```
