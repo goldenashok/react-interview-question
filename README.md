@@ -211,7 +211,7 @@
     - useDeferredvalue() -> Update the value
 
 19. React Query
-      React Query is a JavaScript library designed to simplify the complex task of data fetching and caching in React applications. It offers a set of hooks and utilities that enable you to manage data from various sources, including REST APIs, GraphQL, or even local state, effortlessly.
+     - React Query is a JavaScript library designed to simplify the complex task of data fetching and caching in React applications. It offers a set of hooks and utilities that enable you to manage data from various sources, including REST APIs, GraphQL, or even local state, effortlessly.
    ```
    import React from 'react';
    import logo from './logo.svg';
