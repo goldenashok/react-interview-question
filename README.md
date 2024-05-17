@@ -164,3 +164,16 @@
    - Bundler
    - CDN
    - Optimize code
+16. useDeferredValue
+     - The `useDeferredValue` hook in React allows you to postpone updating a component of the UI. This can be beneficial for boosting performance when rendering a specific section of the UI is expensive, or when you wish to prioritize rendering other parts of the UI.
+     - The useDeferredValue hook takes two arguments:
+
+         value: The value you want to defer. It can have any type
+         options: An object that can have the 2 properties timeoutMs and schedular
+         timeoutMs: The time in milliseconds to wait before updating the value.
+         scheduler: A function that will be used to schedule the update.
+     Here are some of the benefits of using the useDeferredValue hook:
+
+   - It can improve the performance of your application by preventing unnecessary re-renders.
+   - It can help to improve the user experience by ensuring that the UI is always up-to-date.
+   - It is easy to use and understand.
