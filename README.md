@@ -178,3 +178,109 @@
       - It can help to improve the user experience by ensuring that the UI is always up-to-date.
       - It is easy to use and understand.
       - Ref URL : https://www.youtube.com/watch?v=iDi0oAcpfG4&list=PLddu5tL-zt89qhynJUFnZedUmr7fJW0Xw&index=15
+17. useTransition()
+      - useTransition() can be used to tell React that certain state updates have a lower priority (i.e., all other state updates or UI rendering triggers have a higher priority).
+
+      - When calling useTransition(), you get back an array with exactly two elements: An isPending boolean value, telling you whether the low-priority state update is still pending, and a startTransition() function that can be wrapped around a state update to tell React, that it is a low-priority update.
+       ```
+         import React, {useState, useTransition } from "react";
+         import { ActivityIndicator, Button, SafeAreaView, Text, TextInput, TextInputComponent } from "react-native";
+         const App =()=>{
+         const [isPending, startTransition] = useTransition();
+             const [count, setCount] = useState(0);
+             
+             function handleClick() {
+               startTransition(() => {
+                 setCount(count => count+ 1);
+               })
+             }
+         return(
+             <SafeAreaView
+          style={{flex:1,alignItems:"center",justifyContent:"center"}}>
+               
+               {isPending && <ActivityIndicator />}
+               <Text>{count}</Text>
+                 <Button  title="Count" onPress={()=>handleClick()} />
+         </SafeAreaView>)
+         }
+         export default App
+      ```
+       Ref URL : https://www.youtube.com/watch?v=hyDDerWv7mg&list=PLddu5tL-zt89qhynJUFnZedUmr7fJW0Xw&index=13
+18. useTransition() vs useDeferredValue()
+    useTransition() -> Update the state Value
+    useDeferredvalue() -> Update the value
+19. React Query
+      React Query is a JavaScript library designed to simplify the complex task of data fetching and caching in React applications. It offers a set of hooks and utilities that enable you to manage data from various sources, including REST APIs, GraphQL, or even local state, effortlessly.
+   ```
+   import React from 'react';
+   import logo from './logo.svg';
+   import './App.css';
+   import { useQuery, useMutation } from '@tanstack/react-query';
+   
+   function App() {
+     const userData = useQuery(
+       ['users'], 
+       () => {
+         return fetch('https://jsonplaceholder.typicode.com/users').then(response => response.json());
+       },
+       {
+         enabled: false,
+       }
+     );
+   
+     const mutatePost = useMutation(
+       ['posts'],
+       (newPost: any) => {
+         return fetch('https://jsonplaceholder.typicode.com/posts', {
+           method: 'POST',
+           body: JSON.stringify(newPost),
+           headers: {
+             'Content-type': 'application/json; charset=UTF-8',
+           },
+         }).then((response) => response.json())
+       }
+     )
+   
+     return (
+       <div>
+         <div>
+           <button onClick={() => userData.refetch()}>Get Users</button>
+           <div>
+             {userData.isFetching && (
+               <div>Fetching user data...</div>
+             )}
+             {userData.isError && (
+               <div>{`Error get data!!!`}</div>
+             )}
+             {userData.data && userData.data.length > 0 && userData.data.map((user: any) => (
+               <div>{user.name}</div>
+             ))}
+           </div>
+         </div>
+         <hr />
+         <div>
+           <button onClick={() => mutatePost.mutate({ title: 'First Post', body: 'First Post Body', userId: 1 })}>Add New Post</button>
+           <div>
+             {mutatePost.isLoading && (
+               <div>Adding new post...</div>
+             )}
+             {mutatePost.isError && (
+               <div>{`Error add new post!!!`}</div>
+             )}
+             {mutatePost.data && (
+               <div>{`Success add new post with title : '${mutatePost.data.title}'`}</div>
+             )}
+           </div>
+         </div>
+       </div>
+     );
+   }
+   
+   export default App;
+   ```
+   - Difference between useQuery and useMutation
+      - Purpose: useQuery is for reading data, while useMutation is for modifying data.
+      - Typical Use Case: useQuery is used when you want to fetch and display data, while useMutation is used when you want to make changes to that data.
+      - Return Values: useQuery returns { data, error, isLoading, isFetching }, while useMutation returns { mutate, data, error, isError, isLoading, isSuccess }.
+      - Error Handling: Both hooks handle errors, but useMutation provides additional features for handling optimistic updates and rollbacks in case of errors during mutations.
+        
